@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>火辣辣的美发店-潮流发型设计与美发门店服务指南</title>
+<meta name="description" content="火辣辣的美发店主题页面，介绍潮流发型设计、剪发染烫护理、门店服务流程、发型选择建议与常见问题，帮助你了解美发店能提供哪些服务以及如何挑选适合自己的发型。">
+<meta name="keywords" content="火辣辣的美发店,美发店,发型设计,剪发,染发,烫发,头发护理,美发门店">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+:root{
+  --hot:#e8362a;
+  --hot-deep:#b81f18;
+  --amber:#ff8a1e;
+  --ink:#231a18;
+  --ink-soft:#5c4a45;
+  --cream:#fff7f2;
+  --cream-2:#ffece1;
+  --line:#f0d8cc;
+  --white:#ffffff;
+  --shadow:0 10px 30px rgba(184,31,24,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+ul{list-style:none;}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 20px;}
+
+/* ============ 顶部公告 ============ */
+.topbar{
+  background:linear-gradient(90deg,var(--hot-deep),var(--hot) 45%,var(--amber));
+  color:#fff;
+  font-size:13.5px;
+  letter-spacing:.3px;
+}
+.topbar .wrap{
+  display:flex;flex-wrap:wrap;gap:8px 18px;
+  align-items:center;justify-content:space-between;
+  padding-top:9px;padding-bottom:9px;
+}
+.topbar span{display:inline-flex;align-items:center;gap:6px;}
+.topbar .dot{width:7px;height:7px;border-radius:50%;background:#ffe08a;display:inline-block;}
+
+/* ============ 页眉导航 ============ */
+header.site-head{
+  background:rgba(255,247,242,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:60;
+}
+.nav-row{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:18px;padding:14px 0;
+}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand-mark{
+  width:46px;height:46px;border-radius:14px;flex:0 0 auto;
+  background:linear-gradient(140deg,var(--hot),var(--amber));
+  color:#fff;font-weight:800;font-size:20px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 16px rgba(232,54,42,.32);
+}
+.brand-txt strong{display:block;font-size:19px;letter-spacing:.5px;line-height:1.25;}
+.brand-txt em{font-style:normal;font-size:12.5px;color:var(--ink-soft);letter-spacing:1.2px;}
+nav.main-nav ul{display:flex;flex-wrap:wrap;gap:4px;}
+nav.main-nav a{
+  display:block;padding:8px 14px;border-radius:999px;
+  font-size:15px;color:var(--ink-soft);transition:.22s;
+}
+nav.main-nav a:hover,nav.main-nav a.active{
+  background:var(--cream-2);color:var(--hot-deep);font-weight:600;
+}
+.head-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(120deg,var(--hot),var(--amber));
+  color:#fff;font-size:14.5px;font-weight:600;
+  padding:10px 20px;border-radius:999px;
+  box-shadow:0 8px 20px rgba(232,54,42,.28);
+  transition:.22s;white-space:nowrap;
+}
+.head-cta:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(232,54,42,.34);}
+
+/* ============ 首屏 ============ */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 420px at 88% 8%,rgba(255,138,30,.20),transparent 62%),
+    radial-gradient(700px 380px at 4% 92%,rgba(232,54,42,.16),transparent 60%),
+    linear-gradient(180deg,#fff9f5,#ffece1);
+  padding:64px 0 56px;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.08fr .92fr;
+  gap:46px;align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff;border:1px solid var(--line);
+  color:var(--hot-deep);font-size:13.5px;font-weight:600;
+  padding:6px 15px;border-radius:999px;margin-bottom:20px;
+  box-shadow:0 4px 12px rgba(184,31,24,.07);
+}
+.hero h1{
+  font-size:clamp(30px,4.6vw,50px);
+  line-height:1.22;letter-spacing:.5px;
+  margin-bottom:18px;
+}
+.hero h1 .hl{
+  background:linear-gradient(100deg,var(--hot),var(--amber));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p.lead{
+  font-size:16.5px;color:var(--ink-soft);
+  max-width:56ch;margin-bottom:26px;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:30px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:15.5px;font-weight:600;padding:13px 26px;border-radius:999px;
+  transition:.22s;cursor:pointer;border:none;
+}
+.btn-primary{
+  background:linear-gradient(120deg,var(--hot),var(--amber));
+  color:#fff;box-shadow:0 10px 24px rgba(232,54,42,.3);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(232,54,42,.36);}
+.btn-ghost{
+  background:#fff;color:var(--hot-deep);border:1.5px solid var(--line);
+}
+.btn-ghost:hover{border-color:var(--hot);background:#fff6f1;}
+.hero-stats{
+  display:flex;flex-wrap:wrap;gap:26px;
+  padding-top:22px;border-top:1px dashed var(--line);
+}
+.hero-stats div strong{
+  display:block;font-size:22px;color:var(--hot-deep);line-height:1.3;
+}
+.hero-stats div span{font-size:13px;color:var(--ink-soft);}
+
+/* 首屏右侧服务卡 */
+.hero-card{
+  background:#fff;border-radius:24px;padding:26px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+.hero-card h2{
+  font-size:17px;margin-bottom:16px;
+  display:flex;align-items:center;gap:8px;
+}
+.hero-card h2::before{
+  content:"";width:5px;height:18px;border-radius:3px;
+  background:linear-gradient(180deg,var(--hot),var(--amber));
+}
+.svc-list li{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:12px 0;border-bottom:1px dashed var(--line);
+}
+.svc-list li:last-child{border-bottom:none;padding-bottom:0;}
+.svc-ico{
+  flex:0 0 auto;width:38px;height:38px;border-radius:12px;
+  background:var(--cream-2);color:var(--hot-deep);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;font-weight:700;
+}
+.svc-list b{display:block;font-size:15px;margin-bottom:2px;}
+.svc-list small{color:var(--ink-soft);font-size:13.5px;line-height:1.6;}
+
+/* ============ 通用区块 ============ */
+section{padding:62px 0;}
+.sec-head{margin-bottom:34px;max-width:760px;}
+.sec-kicker{
+  font-size:13px;font-weight:700;letter-spacing:2.5px;
+  color:var(--hot);text-transform:uppercase;margin-bottom:10px;
+}
+.sec-head h2{
+  font-size:clamp(23px,3vw,32px);line-height:1.3;margin-bottom:12px;
+}
+.sec-head p{color:var(--ink-soft);font-size:15.5px;}
+.alt{background:#fff;}
+
+/* ============ 发型风格 ============ */
+.style-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));
+  gap:20px;
+}
+.style-card{
+  background:#fff;border:1px solid var(--line);border-radius:20px;
+  padding:24px 22px;transition:.25s;position:relative;overflow:hidden;
+}
+.alt .style-card{background:var(--cream);}
+.style-card::after{
+  content:"";position:absolute;inset:auto -30px -30px auto;
+  width:90px;height:90px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,138,30,.18),transparent 70%);
+}
+.style-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#f6c3b4;}
+.style-card .num{
+  font-size:13px;font-weight:800;color:var(--hot);
+  letter-spacing:1px;margin-bottom:10px;
+}
+.style-card h3{font-size:17.5px;margin-bottom:10px;}
+.style-card p{font-size:14.5px;color:var(--ink-soft);margin-bottom:14px;}
+.chips{display:flex;flex-wrap:wrap;gap:7px;}
+.chips span{
+  font-size:12.5px;padding:4px 11px;border-radius:999px;
+  background:var(--cream-2);color:var(--hot-deep);
+}
+.alt .chips span{background:#fff;border:1px solid var(--line);}
+
+/* ============ 服务流程 ============ */
+.flow{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:18px;counter-reset:step;
+}
+.flow-item{
+  background:linear-gradient(180deg,#fff,#fff8f4);
+  border:1px solid var(--line);border-radius:18px;
+  padding:24px 20px;position:relative;
+}
+.flow-item::before{
+  counter-increment:step;content:counter(step,decimal-leading-zero);
+  display:inline-block;font-size:13px;font-weight:800;
+  color:#fff;background:linear-gradient(120deg,var(--hot),var(--amber));
+  padding:3px 11px;border-radius:999px;margin-bottom:14px;
+}
+.flow-item h3{font-size:16.5px;margin-bottom:8px;}
+.flow-item p{font-size:14px;color:var(--ink-soft);}
+
+/* ============ 选择建议（图文列表） ============ */
+.advice{
+  display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start;
+}
+.advice-list li{
+  display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);
+}
+.advice-list li:last-child{border-bottom:none;}
+.advice-list .idx{
+  flex:0 0 auto;width:30px;height:30px;border-radius:9px;
+  background:var(--cream-2);color:var(--hot-deep);
+  font-size:14px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+.advice-list b{display:block;font-size:15.5px;margin-bottom:3px;}
+.advice-list p{font-size:14.3px;color:var(--ink-soft);}
+.aside-box{
+  background:linear-gradient(160deg,#fff4ee,#ffe4d6);
+  border:1px solid var(--line);border-radius:22px;padding:28px;
+}
+.aside-box h3{font-size:18px;margin-bottom:14px;}
+.aside-box ul li{
+  font-size:14.5px;color:var(--ink-soft);
+  padding-left:20px;position:relative;margin-bottom:11px;
+}
+.aside-box ul li::before{
+  content:"";position:absolute;left:0;top:9px;
+  width:8px;height:8px;border-radius:50%;
+  background:linear-gradient(120deg,var(--hot),var(--amber));
+}
+.aside-note{
+  margin-top:18px;padding-top:16px;border-top:1px dashed #e9bda9;
+  font-size:13.5px;color:var(--ink-soft);
+}
+
+/* ============ 门店体验（三栏） ============ */
+.exp-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+.exp-card{
+  border-radius:20px;padding:26px 24px;
+  background:#fff;border:1px solid var(--line);
+  transition:.25s;
+}
+.exp-card:hover{box-shadow:var(--shadow);transform:translateY(-4px);}
+.exp-card .badge{
+  display:inline-block;font-size:12.5px;font-weight:700;
+  color:var(--hot-deep);background:var(--cream-2);
+  padding:4px 12px;border-radius:999px;margin-bottom:14px;
+}
+.exp-card h3{font-size:17.5px;margin-bottom:10px;}
+.exp-card p{font-size:14.5px;color:var(--ink-soft);}
+
+/* ============ 价格参考说明 ============ */
+.price-note{
+  background:#fff;border:1px solid var(--line);border-radius:22px;
+  padding:30px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;
+}
+.price-note h3{font-size:19px;margin-bottom:12px;}
+.price-note p{font-size:14.8px;color:var(--ink-soft);margin-bottom:12px;}
+.price-factors li{
+  display:flex;justify-content:space-between;gap:16px;
+  padding:11px 0;border-bottom:1px dashed var(--line);font-size:14.5px;
+}
+.price-factors li:last-child{border-bottom:none;}
+.price-factors span:first-child{color:var(--ink-soft);}
+.price-factors span:last-child{font-weight:600;color:var(--hot-deep);}
+
+/* ============ FAQ ============ */
+.faq{max-width:900px;}
+.faq details{
+  background:#fff;border:1px solid var(--line);border-radius:16px;
+  margin-bottom:13px;overflow:hidden;transition:.2s;
+}
+.faq details[open]{border-color:#f2b7a5;box-shadow:0 8px 22px rgba(184,31,24,.08);}
+.faq summary{
+  cursor:pointer;list-style:none;
+  padding:18px 54px 18px 22px;position:relative;
+  font-size:16px;font-weight:600;
+}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{
+  content:"+";position:absolute;right:22px;top:50%;
+  transform:translateY(-50%);font-size:22px;font-weight:400;
+  color:var(--hot);line-height:1;
+}
+.faq details[open] summary::after{content:"–";}
+.faq .faq-body{
+  padding:0 22px 20px;font-size:14.8px;color:var(--ink-soft);
+  border-top:1px dashed var(--line);padding-top:16px;margin-top:0;
+}
+
+/* ============ 行动条 ============ */
+.cta-band{
+  background:linear-gradient(115deg,var(--hot-deep),var(--hot) 55%,var(--amber));
+  color:#fff;border-radius:26px;padding:44px 38px;
+  display:flex;flex-wrap:wrap;gap:24px;
+  align-items:center;justify-content:space-between;
+}
+.cta-band h2{font-size:clamp(21px,2.6vw,28px);margin-bottom:8px;}
+.cta-band p{font-size:15px;opacity:.92;max-width:60ch;}
+.cta-band .btn{
+  background:#fff;color:var(--hot-deep);
+  box-shadow:0 10px 26px rgba(0,0,0,.16);
+}
+.cta-band .btn:hover{transform:translateY(-2px);}
+
+/* ============ 页脚 ============ */
+footer.site-foot{
+  background:#2a1d19;color:#d9c8c0;
+  padding:52px 0 26px;margin-top:20px;
+}
+.foot-grid{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;
+  gap:32px;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.1);
+}
+.foot-grid h4{color:#fff;font-size:15.5px;margin-bottom:14px;}
+.foot-grid p,.foot-grid li{font-size:13.8px;line-height:1.9;color:#c3ada4;}
+.foot-grid li a:hover{color:var(--amber);}
+.foot-brand{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
+.foot-brand .brand-mark{width:40px;height:40px;font-size:17px;border-radius:12px;}
+.foot-brand strong{color:#fff;font-size:17px;}
+.foot-bottom{
+  padding-top:20px;display:flex;flex-wrap:wrap;gap:10px 22px;
+  justify-content:space-between;font-size:13px;color:#a08a82;
+}
+
+/* ============ 响应式 ============ */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:34px;}
+  .advice{grid-template-columns:1fr;gap:26px;}
+  .price-note{grid-template-columns:1fr;gap:22px;}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:26px;}
+}
+@media (max-width:760px){
+  .nav-row{flex-wrap:wrap;padding:12px 0;}
+  nav.main-nav{order:3;width:100%;}
+  nav.main-nav ul{justify-content:flex-start;gap:2px;}
+  nav.main-nav a{padding:7px 11px;font-size:14px;}
+  .head-cta{padding:9px 16px;font-size:13.5px;}
+  section{padding:46px 0;}
+  .hero{padding:44px 0 40px;}
+  .hero-stats{gap:20px;}
+  .cta-band{padding:32px 24px;}
+}
+@media (max-width:520px){
+  .brand-txt em{display:none;}
+  .hero-stats div strong{font-size:19px;}
+  .foot-grid{grid-template-columns:1fr;}
+  .topbar .wrap{font-size:12.5px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span><i class="dot"></i>潮流发型灵感 · 剪染烫护一站式了解</span>
+    <span>进店前先看：发型沟通要点与护理常识</span>
+  </div>
+</div>
+
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="brand" href="#top">
+      <span class="brand-mark">辣</span>
+      <span class="brand-txt">
+        <strong>火辣辣的美发店</strong>
+        <em>HAIR STUDIO GUIDE</em>
+      </span>
+    </a>
+    <nav class="main-nav" aria-label="主导航">
+      <ul>
+        <li><a href="#styles" class="active">发型风格</a></li>
+        <li><a href="#service">服务项目</a></li>
+        <li><a href="#flow">到店流程</a></li>
+        <li><a href="#choose">选择建议</a></li>
+        <li><a href="#price">费用参考</a></li>
+        <li><a href="#faq">常见问题</a></li>
+      </ul>
+    </nav>
+    <a class="head-cta" href="#flow">了解到店流程</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="hero-tag">🔥 热门发型 · 剪染烫护全攻略</span>
+        <h1>火辣辣的美发店，<span class="hl">把发型想法变成看得见的样子</span></h1>
+        <p class="lead">
+          很多人走进美发店时只有一个模糊的念头——想换个发型，却说不清具体要什么。这个页面把美发店常见服务、发型风格分类、到店沟通流程和日常护理要点整理在一起，帮助你在坐下之前就想清楚：自己适合什么、要跟发型师说什么、做完之后怎么打理。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#styles">看看有哪些风格</a>
+          <a class="btn btn-ghost" href="#choose">怎么挑适合自己的</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>剪 · 染 · 烫</strong><span>基础服务三大类</span></div>
+          <div><strong>4 步沟通</strong><span>到店前的准备思路</span></div>
+          <div><strong>日常护理</strong><span>做完造型后的维护</span></div>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="常见服务速览">
+        <h2>美发店常见服务速览</h2>
+        <ul class="svc-list">
+          <li>
+            <span class="svc-ico">剪</span>
+            <span><b>剪发与造型修剪</b><small>调整层次、长度与轮廓，是改变形象最直接的方式。</small></span>
+          </li>
+          <li>
+            <span class="svc-ico">染</span>
+            <span><b>染发与补色</b><small>改变发色基调，或对新生发根进行补色维护。</small></span>
+          </li>
+          <li>
+            <span class="svc-ico">烫</span>
+            <span><b>烫发与纹理处理</b><small>增加卷度、蓬松感或顺直效果，改变头发形态。</small></span>
+          </li>
+          <li>
+            <span class="svc-ico">护</span>
+            <span><b>洗护与发质养护</b><small>清洁、深层护理与头皮养护，改善干枯毛躁状态。</small></span>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 发型风格 -->
+  <section id="styles" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">Style</div>
+        <h2>常见的发型风格方向</h2>
+        <p>风格名称只是沟通的起点，真正决定效果的是长度、层次、卷度、发色与个人脸型发质的组合。下面这些方向可以帮你更快地表达自己的想法。</p>
+      </div>
+
+      <div class="style-grid">
+        <article class="style-card">
+          <div class="num">01</div>
+          <h3>清爽短发</h3>
+          <p>以耳下到下巴附近的长度为主，强调干净利落的轮廓，日常打理相对省时。</p>
+          <div class="chips"><span>波波头</span><span>层次短发</span><span>齐耳短发</span></div>
+        </article>
+        <article class="style-card">
+          <div class="num">02</div>
+          <h3>中长层次</h3>
+          <p>锁骨到肩下长度，通过层次让头发有动感，可扎可放，适配场景比较广。</p>
+          <div class="chips"><span>锁骨发</span><span>碎盖层次</span><span>自然内扣</span></div>
+        </article>
+        <article class="style-card">
+          <div class="num">03</div>
+          <h3>长发光泽感</h3>
+          <p>保留长发长度，重点放在发尾整齐度与整体光泽，适合偏爱温柔气质的方向。</p>
+          <div class="chips"><span>大波浪</span><span>直发顺滑</span><span>发尾微卷</span></div>
+        </article>
+        <article class="style-card">
+          <div class="num">04</div>
+          <h3>卷度造型</h3>
+          <p>通过烫发或日常卷发工具制造卷度，卷径大小直接影响成熟感与活泼感。</p>
+          <div class="chips"><span>法式卷</span><span>蛋卷</span><span>羊毛卷</span></div>
+        </article>
+        <article class="style-card">
+          <div class="num">05</div>
+          <h3>发色变化</h3>
+          <p>从低调的棕色系到明度更高的色系，发色会明显影响整体气色与风格印象。</p>
+          <div class="chips"><span>冷棕</span><span>奶茶色</span><span>挑染</span></div>
+        </article>
+        <article class="style-card">
+          <div class="num">06</div>
+          <h3>男士短发</h3>
+          <p>以两侧干净、顶部有层次为主，重点是维持周期与日常造型的便利程度。</p>
+          <div class="chips"><span>清爽碎盖</span><span>寸头</span><span>纹理烫</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 服务项目 -->
+  <section id="service">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">Service</div>
+        <h2>美发店的服务项目通常包含什么</h2>
+        <p>不同门店的项目名称会有差异，但大体可以归为下面几类。了解分类有助于你在沟通时准确描述需求，而不是只说“随便剪剪”。</p>
+      </div>
+
+      <div class="exp-grid">
+        <article class="exp-card">
+          <span class="badge">基础项目</span>
+          <h3>洗、剪、吹</h3>
+          <p>洗头负责清洁与放松，剪发决定轮廓与层次，吹整则影响最终呈现的蓬松度与走向。三者配合程度，往往直接决定你走出店门那一刻的效果。</p>
+        </article>
+        <article class="exp-card">
+          <span class="badge">色彩项目</span>
+          <h3>染发、补色、挑染</h3>
+          <p>全头染适合整体换色，补色主要处理新生发根，挑染与局部染则用于增加层次感。染前与发型师确认目标色、底色差异和后续褪色预期很重要。</p>
+        </article>
+        <article class="exp-card">
+          <span class="badge">形态项目</span>
+          <h3>烫发与顺直处理</h3>
+          <p>烫发用于增加卷度或蓬松感，顺直处理则让头发更服帖。这类项目对发质状态较敏感，通常需要先评估头发是否适合再进行。</p>
+        </article>
+        <article class="exp-card">
+          <span class="badge">养护项目</span>
+          <h3>深层护理与头皮养护</h3>
+          <p>针对干枯、毛躁、易断等状态做集中护理，或对头皮做清洁与舒缓。护理类项目一般需要按周期进行，单次效果有限。</p>
+        </article>
+        <article class="exp-card">
+          <span class="badge">造型项目</span>
+          <h3>日常造型与场合造型</h3>
+          <p>包括吹造型、卷发棒造型、编发等，多用于聚会、拍摄、婚礼等场合，特点是即时效果好、维持时间相对较短。</p>
+        </article>
+        <article class="exp-card">
+          <span class="badge">附加服务</span>
+          <h3>修剪刘海与发尾维护</h3>
+          <p>刘海和发尾是最容易走形的部分，定期做小幅修剪可以延长整体发型的保持时间，花费也相对更少。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 到店流程 -->
+  <section id="flow" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">Process</div>
+        <h2>一次顺利的到店流程</h2>
+        <p>把沟通放在动手之前，是减少“做完和想象不一样”的关键。可以参考下面四个步骤来准备。</p>
+      </div>
+
+      <div class="flow">
+        <article class="flow-item">
+          <h3>明确自己的需求</h3>
+          <p>先想清楚这次最想解决的问题：是长度太长、发色暗沉，还是发质毛躁。目标越具体，沟通越高效。</p>
+        </article>
+        <article class="flow-item">
+          <h3>带上参考图片</h3>
+          <p>准备两三张喜欢的发型照片，并说明你喜欢的部分——是长度、卷度还是颜色，而不是整张照搬。</p>
+        </article>
+        <article class="flow-item">
+          <h3>沟通发质与可行性</h3>
+          <p>主动说明近期的染烫经历、是否漂过发、头皮是否敏感。发型师会据此判断项目是否适合当下进行。</p>
+        </article>
+        <article class="flow-item">
+          <h3>确认方案与打理方式</h3>
+          <p>动手前确认大致效果、所需时间和后续打理难度，并请对方演示一遍日常造型的基本手法。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 选择建议 -->
+  <section id="choose">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">Advice</div>
+        <h2>怎么判断一个发型适不适合自己</h2>
+        <p>与其追着流行走，不如先看几个相对稳定的判断维度。它们不能保证效果，但能帮你避开明显的落差。</p>
+      </div>
+
+      <div class="advice">
+        <ul class="advice-list">
+          <li>
+            <span class="idx">1</span>
+            <span><b>看脸型与轮廓</b><p>发型的作用之一是修饰轮廓。脸型偏圆时，通常更适合在顶部增加蓬松、两侧减少堆积；脸型偏长时，横向的层次和刘海会有平衡作用。</p></span>
+          </li>
+          <li>
+            <span class="idx">2</span>
+            <span><b>看发量与发质</b><p>发量偏少的人，过长的直发容易显得贴头皮；发量多且偏硬的人，层次过碎可能显得蓬乱。发质决定了同一个发型在不同人头上的差别。</p></span>
+          </li>
+          <li>
+            <span class="idx">3</span>
+            <span><b>看日常打理时间</b><p>有些发型在店里吹出来很好看，但需要每天花时间打理。如果早上时间紧张，就应优先选择自然风干也能成形的款式。</p></span>
+          </li>
+          <li>
+            <span class="idx">4</span>
+            <span><b>看工作与生活场景</b><p>需要考虑日常是否需要扎发、是否有着装要求、是否经常运动出汗。场景限制越明确，发型选择反而越清晰。</p></span>
+          </li>
+          <li>
+            <span class="idx">5</span>
+            <span><b>看维护周期与成本</b><p>短发和染发通常需要更频繁的维护。事先了解大概多久需要回店一次，能避免后期因为难以维持而放弃造型。</p></span>
+          </li>
+        </ul>
+
+        <aside class="aside-box">
+          <h3>沟通时可以这样表达</h3>
+          <ul>
+            <li>“我想保留长度，只修剪发尾和层次。”</li>
+            <li>“我平时不太用卷发棒，希望自然干也能看。”</li>
+            <li>“我上次染发是几个月前，发尾比较干。”</li>
+            <li>“颜色我希望低调一些，不要褪得太快。”</li>
+            <li>“刘海我想留长一点，方便以后扎起来。”</li>
+          </ul>
+          <p class="aside-note">
+            说明得越具体，越容易得到接近预期的结果。如果对某个项目不确定，可以直接问清楚它的操作方式和大致维持时间，再决定是否进行。
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 费用参考 -->
+  <section id="price" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">Cost</div>
+        <h2>影响美发费用的几个因素</h2>
+        <p>美发价格因城市、门店定位、发型师级别和所用产品不同而差异较大，这里不做具体报价，只说明影响价格的主要变量，便于你到店前心里有数。</p>
+      </div>
+
+      <div class="price-note">
+        <div>
+          <h3>为什么同样的项目价格差别很大</h3>
+          <p>剪发、染发、烫发本身是服务，价格里既包含技术，也包含产品、时间和门店运营成本。同一句“染个头发”，在不同条件下对应的操作流程可能完全不同。</p>
+          <p>比较价格时，建议同时问清楚包含哪些环节——是否含洗吹、是否含护理、是否需要额外处理发根或发尾，这样得到的数字才具备可比性。</p>
+        </div>
+        <ul class="price-factors">
+          <li><span>门店所在城市与商圈</span><span>影响明显</span></li>
+          <li><span>发型师的资历与级别</span><span>影响明显</span></li>
+          <li><span>头发长度与发量</span><span>影响较大</span></li>
+          <li><span>是否涉及漂发等预处理</span><span>影响较大</span></li>
+          <li><span>所用产品的类型</span><span>影响中等</span></li>
+          <li><span>是否叠加护理项目</span><span>影响中等</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">FAQ</div>
+        <h2>关于美发店的常见问题</h2>
+        <p>下面这些问题在到店前后被问到的频率比较高，整理出来供参考。</p>
+      </div>
+
+      <div class="faq">
+        <details open>
+          <summary>第一次去一家新店，怎么减少踩坑的概率？</summary>
+          <div class="faq-body">可以先从修剪类的小项目开始，比如修剪发尾或刘海，通过一次简单服务感受沟通方式和操作习惯。同时留意发型师是否愿意先听你的需求、是否主动询问你的发质情况和日常打理习惯，这些细节比店面装修更能反映服务水平。</div>
+        </details>
+        <details>
+          <summary>染发和烫发可以同一天做吗？</summary>
+          <div class="faq-body">这两种操作都会对头发造成一定负担，能否同一天进行取决于你当前的发质状态和具体项目。如果头发已经比较干枯或近期做过类似处理，通常需要分开进行或调整方案。建议在操作前让发型师评估发质，并根据评估结果决定顺序和间隔。</div>
+        </details>
+        <details>
+          <summary>为什么刚做完的发型和几天后看起来不一样？</summary>
+          <div class="faq-body">刚完成时头发处于造型后的状态，随着洗头、出汗和自然生长，卷度会逐渐放松、层次会变得不那么明显，这是正常现象。烫发类项目通常需要几天时间让卷度稳定下来，期间按发型师建议的方式洗护即可。</div>
+        </details>
+        <details>
+          <summary>染发后颜色掉得快怎么办？</summary>
+          <div class="faq-body">发色褪色速度与发质、染发方式、洗头频率和水温都有关系。一般来说，减少高温水洗头、避免频繁使用高温造型工具、选择适合染后发质的洗护产品，有助于让颜色维持得更久一些。具体建议可以向为你操作的发型师确认。</div>
+        </details>
+        <details>
+          <summary>头发毛躁干枯，是不是只能靠剪掉？</summary>
+          <div class="faq-body">修剪可以去掉受损最严重的发尾，让整体看起来更整齐，但无法改变尚未剪掉部分的发质状态。日常护理、减少高温处理和化学处理频率，对改善毛躁同样重要。如果受损范围较大，通常需要修剪与护理配合进行。</div>
+        </details>
+        <details>
+          <summary>多久修剪一次比较合适？</summary>
+          <div class="faq-body">这取决于发型长度和生长速度。短发为了维持轮廓，间隔通常较短；长发如果只是保持发尾整齐，间隔可以更长一些。比较实用的判断方法是：当发尾开始明显分叉，或发型轮廓已经走形时，就可以考虑回店修剪。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 行动条 -->
+  <section>
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>准备好换个发型了吗？</h2>
+          <p>先想清楚需求，带上参考图，再和发型师沟通发质与可行性。把这几步做好，比反复纠结选哪家店更能提升最终效果。</p>
+        </div>
+        <a class="btn" href="#choose">回看选择建议</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <span class="brand-mark">辣</span>
+          <strong>火辣辣的美发店</strong>
+        </div>
+        <p>一个围绕美发服务与发型知识整理的内容页面，帮助你在到店前理清需求、了解流程，做出更适合自己的选择。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#styles">发型风格</a></li>
+          <li><a href="#service">服务项目</a></li>
+          <li><a href="#flow">到店流程</a></li>
+          <li><a href="#choose">选择建议</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>实用信息</h4>
+        <ul>
+          <li><a href="#price">费用影响因素</a></li>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#top">返回顶部</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>温馨提示</h4>
+        <p>染发、烫发等化学处理项目对发质有一定影响，进行前建议先做发质评估。本页内容为通用信息整理，具体方案请以门店专业人员的当面评估为准。</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>火辣辣的美发店 · 发型服务与护理信息整理</span>
+      <span>内容仅供参考，请结合实际发质情况判断</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('nav.main-nav a[href^="#"]');
+  var sections = [];
+  links.forEach(function(a){
+    var id = a.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if(el){ sections.push({link:a, el:el}); }
+  });
+  function onScroll(){
+    var y = window.scrollY + 130;
+    var current = sections.length ? sections[0] : null;
+    sections.forEach(function(item){
+      if(item.el.offsetTop <= y){ current = item; }
+    });
+    links.forEach(function(a){ a.classList.remove('active'); });
+    if(current && current.link){ current.link.classList.add('active'); }
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      window.requestAnimationFrame(function(){ onScroll(); ticking = false; });
+      ticking = true;
+    }
+  }, {passive:true});
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
