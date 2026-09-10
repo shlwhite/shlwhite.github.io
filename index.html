@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>策略战争-战棋与战争策略游戏玩法解析与入门指南</title>
+<meta name="description" content="策略战争主题内容站，解析战棋、即时战略、回合制战争策略等玩法机制，提供兵种搭配、资源运营、地形利用与新手入门建议，帮助玩家理解战争策略游戏的核心思路。">
+<meta name="keywords" content="策略战争,战争策略游戏,战棋游戏,回合制策略,即时战略,兵种搭配,资源运营">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+:root{
+  --bg:#0f1419;
+  --bg-alt:#161d26;
+  --panel:#1c2530;
+  --panel-2:#232e3b;
+  --line:#2c3947;
+  --text:#e6edf3;
+  --text-dim:#9aa8b6;
+  --accent:#c9a227;
+  --accent-2:#4a8fbf;
+  --danger:#b8453a;
+  --radius:10px;
+  --maxw:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.75;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(15,20,25,.94);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(8px);
+}
+.header-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;gap:24px;
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;letter-spacing:.5px;}
+.brand-mark{
+  width:30px;height:30px;border-radius:6px;
+  background:linear-gradient(135deg,var(--accent) 0%,#8a6f14 100%);
+  display:flex;align-items:center;justify-content:center;
+  color:#15181c;font-size:15px;font-weight:900;
+}
+.brand small{display:block;font-size:11px;color:var(--text-dim);font-weight:400;letter-spacing:1px;}
+.main-nav{display:flex;gap:26px;font-size:15px;}
+.main-nav a{color:var(--text-dim);padding:4px 0;border-bottom:2px solid transparent;transition:.2s;}
+.main-nav a:hover,.main-nav a.active{color:var(--text);border-bottom-color:var(--accent);}
+.nav-toggle{
+  display:none;background:none;border:1px solid var(--line);color:var(--text);
+  border-radius:6px;padding:6px 10px;font-size:14px;cursor:pointer;
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(201,162,39,.16),transparent 55%),
+    radial-gradient(circle at 85% 0%,rgba(74,143,191,.18),transparent 50%),
+    linear-gradient(180deg,#141b23 0%,#0f1419 100%);
+  border-bottom:1px solid var(--line);
+  padding:64px 0 56px;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.35fr .95fr;gap:48px;align-items:center;
+}
+.hero-tag{
+  display:inline-block;font-size:12px;letter-spacing:2px;color:var(--accent);
+  border:1px solid rgba(201,162,39,.45);border-radius:999px;
+  padding:4px 14px;margin-bottom:20px;
+}
+.hero h1{font-size:40px;line-height:1.28;font-weight:800;letter-spacing:1px;margin-bottom:18px;}
+.hero h1 span{color:var(--accent);}
+.hero p.lead{color:var(--text-dim);font-size:16.5px;max-width:620px;margin-bottom:28px;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{
+  display:inline-block;padding:11px 26px;border-radius:8px;font-size:15px;
+  font-weight:600;transition:.2s;border:1px solid transparent;cursor:pointer;
+}
+.btn-primary{background:var(--accent);color:#16191d;}
+.btn-primary:hover{background:#dcb63a;}
+.btn-ghost{border-color:var(--line);color:var(--text);}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+.hero-panel{
+  background:linear-gradient(160deg,var(--panel) 0%,var(--bg-alt) 100%);
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 26px;
+}
+.hero-panel h2{font-size:15px;letter-spacing:1px;color:var(--text-dim);font-weight:600;margin-bottom:16px;}
+.stat-list{list-style:none;display:grid;gap:14px;}
+.stat-list li{display:flex;justify-content:space-between;align-items:center;font-size:14.5px;border-bottom:1px dashed var(--line);padding-bottom:12px;}
+.stat-list li:last-child{border-bottom:none;padding-bottom:0;}
+.stat-list b{color:var(--accent);font-size:16px;font-weight:700;}
+
+/* ---------- section base ---------- */
+section{padding:60px 0;}
+.section-head{margin-bottom:34px;}
+.section-head .kicker{
+  font-size:12px;letter-spacing:2px;color:var(--accent-2);
+  text-transform:uppercase;margin-bottom:8px;font-weight:700;
+}
+.section-head h2{font-size:26px;font-weight:800;letter-spacing:.5px;}
+.section-head p{color:var(--text-dim);margin-top:10px;max-width:760px;font-size:15px;}
+
+/* ---------- 玩法类型 ---------- */
+.type-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.type-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 22px;transition:.25s;
+}
+.type-card:hover{transform:translateY(-4px);border-color:rgba(201,162,39,.5);background:var(--panel-2);}
+.type-card .num{font-size:13px;color:var(--accent);font-weight:700;letter-spacing:1px;}
+.type-card h3{font-size:18px;margin:10px 0 10px;font-weight:700;}
+.type-card p{font-size:14px;color:var(--text-dim);}
+.type-card ul{margin-top:12px;padding-left:18px;font-size:13.5px;color:var(--text-dim);}
+.type-card ul li{margin-bottom:5px;}
+
+/* ---------- 核心机制 ---------- */
+.mech{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.mech-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.mech-item{
+  display:flex;gap:18px;background:var(--panel);
+  border:1px solid var(--line);border-radius:var(--radius);padding:22px;
+}
+.mech-icon{
+  flex:0 0 46px;height:46px;border-radius:8px;
+  background:rgba(74,143,191,.14);border:1px solid rgba(74,143,191,.35);
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;color:var(--accent-2);font-weight:800;
+}
+.mech-item h3{font-size:17px;margin-bottom:8px;}
+.mech-item p{font-size:14.5px;color:var(--text-dim);}
+
+/* ---------- 兵种表 ---------- */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);}
+table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:640px;}
+thead th{
+  background:var(--panel-2);text-align:left;padding:14px 18px;
+  font-weight:700;color:var(--accent);font-size:14px;letter-spacing:.5px;
+  border-bottom:1px solid var(--line);white-space:nowrap;
+}
+tbody td{padding:14px 18px;border-bottom:1px solid var(--line);color:var(--text-dim);}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:rgba(74,143,191,.06);color:var(--text);}
+tbody td:first-child{color:var(--text);font-weight:600;}
+
+/* ---------- 攻略步骤 ---------- */
+.guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.guide-card{
+  background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:var(--radius);padding:22px;
+}
+.guide-card h3{font-size:17px;margin-bottom:10px;}
+.guide-card p{font-size:14.5px;color:var(--text-dim);margin-bottom:10px;}
+.guide-card ol{padding-left:18px;font-size:14px;color:var(--text-dim);}
+.guide-card ol li{margin-bottom:6px;}
+
+/* ---------- 榜单 ---------- */
+.rank-layout{display:grid;grid-template-columns:1.6fr 1fr;gap:32px;align-items:start;}
+.rank-list{list-style:none;counter-reset:rk;}
+.rank-list li{
+  counter-increment:rk;display:flex;gap:16px;align-items:flex-start;
+  padding:16px 0;border-bottom:1px solid var(--line);
+}
+.rank-list li::before{
+  content:counter(rk);flex:0 0 30px;height:30px;border-radius:6px;
+  background:var(--panel-2);color:var(--accent);font-weight:800;font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+}
+.rank-list li:nth-child(-n+3)::before{background:var(--accent);color:#16191d;}
+.rank-list h3{font-size:16px;margin-bottom:4px;}
+.rank-list p{font-size:13.5px;color:var(--text-dim);}
+.side-note{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;
+}
+.side-note h3{font-size:16px;margin-bottom:14px;color:var(--accent);}
+.side-note p{font-size:14px;color:var(--text-dim);margin-bottom:12px;}
+.side-note ul{padding-left:18px;font-size:14px;color:var(--text-dim);}
+.side-note ul li{margin-bottom:8px;}
+
+/* ---------- FAQ ---------- */
+.faq{background:var(--bg-alt);border-top:1px solid var(--line);}
+.faq-list{display:grid;gap:14px;max-width:900px;}
+.faq-item{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;
+}
+.faq-q{
+  width:100%;text-align:left;background:none;border:none;color:var(--text);
+  font-size:16px;font-weight:700;padding:18px 22px;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  font-family:inherit;
+}
+.faq-q .arrow{color:var(--accent);transition:.25s;font-size:14px;}
+.faq-item.open .faq-q .arrow{transform:rotate(180deg);}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height .3s ease;
+  padding:0 22px;color:var(--text-dim);font-size:14.5px;
+}
+.faq-item.open .faq-a{max-height:320px;padding-bottom:20px;}
+
+/* ---------- footer ---------- */
+.site-footer{
+  background:#0b0f13;border-top:1px solid var(--line);
+  padding:48px 0 28px;font-size:14px;color:var(--text-dim);
+}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;margin-bottom:34px;}
+.footer-grid h4{font-size:14px;color:var(--text);margin-bottom:14px;letter-spacing:.5px;}
+.footer-grid ul{list-style:none;}
+.footer-grid ul li{margin-bottom:9px;}
+.footer-grid ul li a:hover{color:var(--accent);}
+.footer-about p{font-size:13.5px;line-height:1.8;max-width:340px;}
+.footer-bottom{
+  border-top:1px solid var(--line);padding-top:20px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:34px;}
+  .type-grid{grid-template-columns:repeat(2,1fr);}
+  .guide-grid{grid-template-columns:repeat(2,1fr);}
+  .rank-layout{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:720px){
+  .main-nav{
+    display:none;position:absolute;top:64px;left:0;right:0;
+    background:var(--bg-alt);border-bottom:1px solid var(--line);
+    flex-direction:column;gap:0;padding:8px 20px 16px;
+  }
+  .main-nav.open{display:flex;}
+  .main-nav a{padding:12px 0;border-bottom:1px solid var(--line);}
+  .nav-toggle{display:block;}
+  .hero{padding:44px 0 40px;}
+  .hero h1{font-size:28px;}
+  .mech-grid{grid-template-columns:1fr;}
+  .type-grid{grid-template-columns:1fr;}
+  .guide-grid{grid-template-columns:1fr;}
+  section{padding:44px 0;}
+  .section-head h2{font-size:22px;}
+  .footer-grid{grid-template-columns:1fr;gap:24px;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">战</span>
+      <span>策略战争<small>WAR STRATEGY HUB</small></span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#types" class="active">玩法类型</a>
+      <a href="#mechanics">核心机制</a>
+      <a href="#units">兵种搭配</a>
+      <a href="#guide">入门攻略</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="展开导航">菜单</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="hero-tag">战争策略 · 玩法解析</span>
+        <h1>理解<span>策略战争</span>，<br>从机制到实战的完整思路</h1>
+        <p class="lead">
+          策略战争并不是比谁点得快，而是比谁在有限资源下做出更合理的判断。
+          本页梳理战棋、回合制策略、即时战略等主要分支的玩法差异，讲清资源运营、地形利用、
+          兵种克制与阵型调度这些共通逻辑，帮助新手快速建立可复用的决策框架。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#guide">查看入门路线</a>
+          <a class="btn btn-ghost" href="#types">了解玩法类型</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <h2>策略战争的四类决策维度</h2>
+        <ul class="stat-list">
+          <li><span>资源分配</span><b>经济</b></li>
+          <li><span>兵种组合</span><b>克制</b></li>
+          <li><span>地形与视野</span><b>空间</b></li>
+          <li><span>节奏与时机</span><b>时间</b></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 玩法类型 -->
+  <section id="types">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Game Types</div>
+        <h2>策略战争的主要玩法分支</h2>
+        <p>同样是“打仗”，不同分支的思考重心差别很大。先确认自己偏好哪一类，再针对性练习，效率会高很多。</p>
+      </div>
+      <div class="type-grid">
+        <article class="type-card">
+          <div class="num">01</div>
+          <h3>战棋 / 回合制</h3>
+          <p>双方轮流行动，强调走位、射程与行动顺序的计算，容错率相对较低。</p>
+          <ul>
+            <li>格子移动与攻击范围</li>
+            <li>先手与行动顺序</li>
+            <li>单位养成与转职</li>
+          </ul>
+        </article>
+        <article class="type-card">
+          <div class="num">02</div>
+          <h3>即时战略 RTS</h3>
+          <p>建造、采集、出兵同时进行，考验多线操作与对局势的实时判断。</p>
+          <ul>
+            <li>经济与军事的平衡</li>
+            <li>侦查与反侦查</li>
+            <li>扩张时机的把握</li>
+          </ul>
+        </article>
+        <article class="type-card">
+          <div class="num">03</div>
+          <h3>大战略 / 沙盘</h3>
+          <p>在更宏观的地图尺度上经营国家，涉及外交、补给、民心与长期规划。</p>
+          <ul>
+            <li>外交与同盟关系</li>
+            <li>补给线与后勤</li>
+            <li>多线战场的取舍</li>
+          </ul>
+        </article>
+        <article class="type-card">
+          <div class="num">04</div>
+          <h3>塔防 / 阵地防守</h3>
+          <p>以固定阵地抵御进攻波次，核心是火力覆盖与资源投入的性价比。</p>
+          <ul>
+            <li>防线层次布置</li>
+            <li>输出与减速搭配</li>
+            <li>波次间的升级节奏</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心机制 -->
+  <section class="mech" id="mechanics">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Core Mechanics</div>
+        <h2>贯穿各类策略战争的共通机制</h2>
+        <p>不管界面怎么变，底层要处理的问题高度相似。理解这几点，换一款新游戏也能较快上手。</p>
+      </div>
+      <div class="mech-grid">
+        <div class="mech-item">
+          <div class="mech-icon">经</div>
+          <div>
+            <h3>资源与产能</h3>
+            <p>资源是行动的约束条件。前期把资源投入到产能建设，还是立刻转化为兵力，是每一局都要面对的选择。判断依据通常是：当前是否面临直接威胁，以及产能回报周期有多长。</p>
+          </div>
+        </div>
+        <div class="mech-item">
+          <div class="mech-icon">克</div>
+          <div>
+            <h3>兵种克制关系</h3>
+            <p>多数作品会设置类似“枪克骑、骑克弓、弓克枪”的循环。克制带来的不仅是数值增减，更决定了交战时该由谁先接敌、谁在后排输出。</p>
+          </div>
+        </div>
+        <div class="mech-item">
+          <div class="mech-icon">地</div>
+          <div>
+            <h3>地形与视野</h3>
+            <p>高地、隘口、森林、河流会改变移动消耗、命中率与防御加成。占据狭窄地形能以少打多，而开阔地则更适合机动部队展开。</p>
+          </div>
+        </div>
+        <div class="mech-item">
+          <div class="mech-icon">时</div>
+          <div>
+            <h3>节奏与时机</h3>
+            <p>什么时候进攻、什么时候收缩防守，往往比单次战斗的胜负更关键。错过窗口期，前期积累的优势可能被对手的防守工事抵消。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 兵种搭配 -->
+  <section id="units">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Unit Composition</div>
+        <h2>常见兵种定位与搭配思路</h2>
+        <p>下表按通用定位整理，具体数值与名称因作品而异，使用时请以实际游戏规则为准。</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>兵种定位</th>
+              <th>主要作用</th>
+              <th>常见弱点</th>
+              <th>搭配建议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>重装前排</td>
+              <td>承受伤害、封锁通道、保护后排输出</td>
+              <td>机动性差，易被远程与法术消耗</td>
+              <td>配合治疗单位，布置在隘口或前线</td>
+            </tr>
+            <tr>
+              <td>远程输出</td>
+              <td>在安全距离持续造成伤害</td>
+              <td>近身脆弱，依赖视野与保护</td>
+              <td>需要前排遮挡，避免单独行动</td>
+            </tr>
+            <tr>
+              <td>机动骑兵</td>
+              <td>快速支援、包抄侧翼、追击残兵</td>
+              <td>正面硬拼吃亏，惧长枪类单位</td>
+              <td>绕后切入敌方远程与后勤</td>
+            </tr>
+            <tr>
+              <td>侦查单位</td>
+              <td>提供视野、探明敌方部署与动向</td>
+              <td>战斗力有限，损失成本需权衡</td>
+              <td>战前派出，避免主力盲目前压</td>
+            </tr>
+            <tr>
+              <td>工程 / 器械</td>
+              <td>攻坚、破防、压制固定目标</td>
+              <td>展开慢，容易被突袭摧毁</td>
+              <td>在己方控制区域内架设使用</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 入门攻略 -->
+  <section id="guide">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Beginner Guide</div>
+        <h2>新手入门的三条练习路线</h2>
+        <p>与其一上来就追求复杂战术，不如先把基础环节练稳，再逐步叠加变化。</p>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <h3>第一步：读懂信息面板</h3>
+          <p>先弄清每个数值代表什么，再谈战术。</p>
+          <ol>
+            <li>确认攻击、防御、射程的含义</li>
+            <li>查看移动力与地形消耗关系</li>
+            <li>记录克制关系与触发条件</li>
+            <li>熟悉资源产出的时间节奏</li>
+          </ol>
+        </article>
+        <article class="guide-card">
+          <h3>第二步：固定一套开局流程</h3>
+          <p>稳定的开局能减少低级失误。</p>
+          <ol>
+            <li>优先保证基础产能不断档</li>
+            <li>按固定比例配置前排与输出</li>
+            <li>开局即派出侦查单位</li>
+            <li>避免资源长期闲置不用</li>
+          </ol>
+        </article>
+        <article class="guide-card">
+          <h3>第三步：复盘关键决策点</h3>
+          <p>输赢之外，更值得记录的是判断依据。</p>
+          <ol>
+            <li>记下第一次交战的时间点</li>
+            <li>分析是兵力不足还是位置不佳</li>
+            <li>检查是否遗漏了侦查信息</li>
+            <li>对比不同选择的后续影响</li>
+          </ol>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 榜单与提示 -->
+  <section id="rank">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Key Points</div>
+        <h2>容易被忽略的关键细节</h2>
+        <p>这些细节不显眼，却常常决定一场对局的走向。</p>
+      </div>
+      <div class="rank-layout">
+        <ol class="rank-list">
+          <li>
+            <div>
+              <h3>补给与后勤线</h3>
+              <p>部队脱离补给范围后战斗力会下降。推进时留意补给覆盖，避免孤军深入导致被围歼。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>视野盲区</h3>
+              <p>没有视野的区域等于未知风险。在进入森林、山谷前，先用廉价单位探路，比主力硬闯更划算。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>撤退也是战术</h3>
+              <p>在不利地形下及时后撤、保存有生力量，往往比强行接战更有利于后续反击。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>不要忽视防守工事</h3>
+              <p>堡垒、陷阱与阵地加成能以较低成本换取时间，为己方集结兵力创造条件。</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>保持资源弹性</h3>
+              <p>把资源全部转化为单一兵种，一旦被克制就难以调整。适当保留储备，应对突发情况。</p>
+            </div>
+          </li>
+        </ol>
+        <aside class="side-note">
+          <h3>选择策略战争游戏的参考点</h3>
+          <p>面对众多同类作品，可以从以下几个角度判断是否适合自己。</p>
+          <ul>
+            <li>单局时长是否符合你的空闲节奏</li>
+            <li>操作强度偏向即时还是回合思考</li>
+            <li>是否有较完整的新手引导与教学关卡</li>
+            <li>养成系统是否会显著影响对局平衡</li>
+            <li>是否支持暂停、存档与难度调整</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">FAQ</div>
+        <h2>关于策略战争的常见问题</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">策略战争类游戏对操作要求高吗？<span class="arrow">▼</span></button>
+          <div class="faq-a">
+            <p>取决于具体分支。回合制战棋与大战略更看重规划与计算，对即时操作要求较低；即时战略则同时考验多线操作与临场反应。可以根据自己更擅长思考还是更擅长操作来选择。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">新手应该先练什么？<span class="arrow">▼</span></button>
+          <div class="faq-a">
+            <p>建议先把资源运营和基础克制关系练熟。这两项是多数策略战争的共同基础，掌握后再去研究阵型、包抄等进阶技巧，会更容易理解为什么这样打有效。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">兵力多就一定能赢吗？<span class="arrow">▼</span></button>
+          <div class="faq-a">
+            <p>不一定。兵力优势需要配合地形、补给与兵种结构才能转化为胜势。在狭窄地形中，数量优势难以展开；若兵种被克制，数量差距也可能被抵消。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">如何提高对局的稳定性？<span class="arrow">▼</span></button>
+          <div class="faq-a">
+            <p>减少不确定性是关键：开局固定流程、及时侦查、保留应对资源、避免在信息不足时贸然决战。把这些习惯固定下来，失误率会明显下降。</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">养成元素会影响公平性吗？<span class="arrow">▼</span></button>
+          <div class="faq-a">
+            <p>不同作品设计差异较大。部分游戏将对战与养成分离，部分则允许养成成果带入对局。选择前可以留意官方说明与玩家反馈，判断是否符合自己的偏好。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <h4>关于本站</h4>
+        <p>策略战争主题内容站，聚焦战争策略类游戏的玩法机制、兵种搭配与入门思路，为玩家提供结构化的参考信息。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#types">玩法类型</a></li>
+          <li><a href="#mechanics">核心机制</a></li>
+          <li><a href="#units">兵种搭配</a></li>
+          <li><a href="#guide">入门攻略</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>专题方向</h4>
+        <ul>
+          <li><a href="#types">战棋与回合制</a></li>
+          <li><a href="#types">即时战略</a></li>
+          <li><a href="#types">大战略沙盘</a></li>
+          <li><a href="#types">塔防防守</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>帮助</h4>
+        <ul>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#rank">关键细节</a></li>
+          <li><a href="#top">返回顶部</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 策略战争 · 玩法解析与入门参考</span>
+      <span>内容仅供学习与交流参考</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 移动端导航
+  var navToggle = document.getElementById('navToggle');
+  var mainNav = document.getElementById('mainNav');
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', function () {
+      mainNav.classList.toggle('open');
+    });
+    mainNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mainNav.classList.remove('open');
+      });
+    });
+  }
+
+  // FAQ 折叠
+  document.querySelectorAll('.faq-item').forEach(function (item) {
+    var btn = item.querySelector('.faq-q');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function (other) {
+        other.classList.remove('open');
+      });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+  </html>
